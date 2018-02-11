@@ -20,8 +20,6 @@ y_all <- rbind(y_train, y_test)
 subject_all <- rbind(subject_train, subject_test)
 
 
-
-
 # Select columns with mean and std only
 features <- read.table('./UCI HAR Dataset/features.txt',header=FALSE);
 features <- as.character(features[,2])
@@ -49,6 +47,4 @@ data_all.dt <- data.table(data_all)
 tidy <- data_all.dt[, lapply(.SD, mean), by=list(activity,subject)]
 
 
-write.table(tidy, './tidy.txt', row.names=TRUE, sep='\t', quote=FALSE)
-
-write(mean_std_names,file='names.txt')
+write.table(tidy, './tidy.txt', row.names=FALSE, sep='\t', quote=FALSE)
